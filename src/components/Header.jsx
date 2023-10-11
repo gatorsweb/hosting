@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillCaretUp } from 'react-icons/ai';
 import { FiUser } from 'react-icons/fi'
+import { CgMenuLeft } from 'react-icons/cg'
+import { MdClose } from 'react-icons/md'
 
 const menuItem = [
   {
@@ -60,6 +62,7 @@ const menuItem = [
 
 export default function Header() {
   const [subMenuOpen, setSubMenuOpen] = useState({});
+  const [MobileNavOpen, setMobileNavOpen] = useState(false)
 
   const controlDropdown = (label, isOpen) => {
     setSubMenuOpen((prevOpen) => ({
@@ -68,10 +71,20 @@ export default function Header() {
     }));
   };
 
+ const MobileNavControl = () =>{
+    setMobileNavOpen(!MobileNavOpen)
+ }
+
   return (
     <div className="bg-black py-3">
       <div className="container flex justify-between items-center">
-        <ul className="flex list-none text-[white] text-[18px] space-x-12">
+        <div className='text-yellow text-[35px] block md:hidden transition-all duration-500' onClick={MobileNavControl}>
+          {
+            MobileNavOpen?  <CgMenuLeft/> : <MdClose/>
+          }
+          
+        </div>
+        <ul className={` ${MobileNavOpen?  'left-[-100%]' : 'left-0 duration-500' } md:flex list-none text-[white] text-[18px] space-y-6 md:space-y-0 md:space-x-12 absolute md:relative bg-black p-8 md:p-0 left-0 md:left-auto top-[139px] md:top-0 md:bg-opacity-0 z-50 w-[100%] md:w-[100%] md:border-none border-t border-t-yellow`}>
           {menuItem.map((item, index) => (
             <li
               key={index}
@@ -83,9 +96,9 @@ export default function Header() {
               </div>
               {item.subMenu && subMenuOpen[item.label] && (
                 <ul
-                  className={`absolute bg-yellow text-black rounded-md mt-2 p-3`}
+                  className={`md:absolute bg-yellow text-black rounded-md mt-2 p-3`}
                 >
-                  <div className="absolute top-[-12px] text-yellow">
+                  <div className="absolute top-[-12px] text-yellow hidden md:block">
                     <AiFillCaretUp />
                   </div>
                   {item.subMenu.map((subItem, subIndex) => (

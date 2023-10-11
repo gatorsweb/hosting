@@ -7,3 +7,12 @@
     @apply font-inter
   }
 }
+
+@layer components{
+  .home-product-box:hover button{
+      @apply bg-[white] text-cream
+  }
+  .accordion__button{
+    @apply bg-light-brown px-6 py-3 space-y-4 text-[22px]
+  }
+}

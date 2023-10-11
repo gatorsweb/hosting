@@ -10,10 +10,10 @@ export default function HeaderTop() {
                 <img src="images/BeeHost.svg" alt="" />
             </div>
             <div className='flex space-x-5'>
-                <div>
+                <div className='hidden md:block'>
                     <form action="" className='flex items-center'>
-                    <input type="serch" className='bg-[#ededed] py-2 px-4 rounded-l-md border-none  focus:outline-none' placeholder='Knowledgebase...' />
-                    <button className='bg-black text-[white] py-3 px-4 rounded-r-md'> <FaSearch/> </button>
+                    <input type="serch" className=' border border-[#dddd] py-2 px-4 rounded-l-md  focus:outline-none' placeholder='Knowledgebase...' />
+                    <button className='bg-black text-[white] py-[13px] px-4 rounded-r-md'> <FaSearch/> </button>
                     </form>
                     
                 </div>

@@ -4,7 +4,7 @@ export default function SearchDomain() {
   return (
     <div className='container py-6'>
         <div className='grid grid-cols-2 md:grid-flow-row'>
-            <div className='flex items-center space-x-6'>
+            <div className='flex items-center space-x-6 col-span-2 md:col-span-1'>
                 <div className='flex items-center'>
                     <div>
                         <img src="images/header-in.svg" alt="domain" className='h-[28px]' />
@@ -32,10 +32,10 @@ export default function SearchDomain() {
                 
 
             </div>
-            <div >
+            <div className='col-span-2 md:col-span-1' >
                     <form action="" className='flex' >
-                        <input type="search" className='w-[80%] block border border-[#ddd] px-3 py-2 focus:outline-none rounded-sm'  />
-                        <button className='w-[20%] bg-cream px-3 py-2 border border-cream'>Search</button>
+                        <input type="search" placeholder='e.g. example.com' className='w-[80%] block border border-[#ddd] px-3 py-2 focus:outline-none rounded-l-md'  />
+                        <button className='w-[20%] bg-cream px-3 py-2 border border-cream text-[white] rounded-r-md'>Search</button>
                     </form>
             </div>
         </div>
