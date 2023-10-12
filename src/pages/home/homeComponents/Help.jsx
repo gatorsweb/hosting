@@ -1,109 +1,54 @@
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-} from 'react-accessible-accordion';
+import React, { useState } from 'react';
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
-import 'react-accessible-accordion/dist/fancy-example.css';
+const faqData = [
+  {
+    question: 'Why buy a domain name from GatorsWeb?',
+    answer: 'React is a JavaScript library for building user interfaces.',
+  },
+  {
+    question: 'How do I install React?',
+    answer: 'You can install React using npm or yarn. Run: npm install react',
+  },
+  {
+    question: 'What are components in React?',
+    answer: 'Components are the building blocks of a React application. They are reusable, self-contained units of code that define how a part of the user interface should appear and function.',
+  },
+  {
+    question: 'What is state in React?',
+    answer: 'State is a built-in object in React that holds data which can be used to control how components behave and render.',
+  },
+];
 
 export default function Help() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(index === activeIndex ? null : index);
+  };
+
   return (
-    <div className='container my-[125px]'>
-        <div className='text-center mb-6'>
-            <h1 className='text-[45px] font-[700]'>Frequently asked questions</h1>
+    <div className="container py-[125px]">
+        <div className='text-center mb-4'>
+          <h1 className='text-[45px] font-[700]'>Frequently asked questions</h1>
         </div>
-        <div className='md:max-w-[70%] m-auto'>
-        <Accordion  preExpanded={['a']}>
-            <AccordionItem uuid="a">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        What harsh truths do you prefer to ignore?
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    <p>
-                        Exercitation in fugiat est ut ad ea cupidatat ut in
-                        cupidatat occaecat ut occaecat consequat est minim minim
-                        esse tempor laborum consequat esse adipisicing eu
-                        reprehenderit enim.
-                    </p>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem uuid="b">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        Is free will real or just an illusion?
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    <p>
-                        In ad velit in ex nostrud dolore cupidatat consectetur
-                        ea in ut nostrud velit in irure cillum tempor laboris
-                        sed adipisicing eu esse duis nulla non.
-                    </p>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem uuid="c">
-                <AccordionItemHeading>
-                    <AccordionItemButton >
-                        Is free will real or just an illusion?
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    <p>
-                        In ad velit in ex nostrud dolore cupidatat consectetur
-                        ea in ut nostrud velit in irure cillum tempor laboris
-                        sed adipisicing eu esse duis nulla non.
-                    </p>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem uuid="d">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        Is free will real or just an illusion?
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    <p>
-                        In ad velit in ex nostrud dolore cupidatat consectetur
-                        ea in ut nostrud velit in irure cillum tempor laboris
-                        sed adipisicing eu esse duis nulla non.
-                    </p>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem uuid="e">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        Is free will real or just an illusion?
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    <p>
-                        In ad velit in ex nostrud dolore cupidatat consectetur
-                        ea in ut nostrud velit in irure cillum tempor laboris
-                        sed adipisicing eu esse duis nulla non.
-                    </p>
-                </AccordionItemPanel>
-            </AccordionItem>
-            <AccordionItem uuid="f">
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        Is free will real or just an illusion?
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    <p>
-                        In ad velit in ex nostrud dolore cupidatat consectetur
-                        ea in ut nostrud velit in irure cillum tempor laboris
-                        sed adipisicing eu esse duis nulla non.
-                    </p>
-                </AccordionItemPanel>
-            </AccordionItem>
-        </Accordion>
+      <div className='md:max-w-[70%] m-auto'>
+      {faqData.map((faq, index) => (
+        <div key={index} className=''>
+          <div onClick={() => toggleAccordion(index)} className='bg-yellow px-4 py-2 my-1 flex justify-between items-center'>
+            <h1 className='text-[22px]'>{faq.question}</h1> {index === activeIndex ? <FaMinus /> : <FaPlus />}
+          </div>
+          {index === activeIndex && (
+            <div className='p-3'>
+              <p>{faq.answer}</p>
+            </div>
+          )}
         </div>
+      ))}
+      </div>
+      
+
+      
     </div>
-    
-  )
+  );
 }
